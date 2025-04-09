@@ -1,0 +1,152 @@
+* {
+  margin: 0px;
+  padding: 0px;
+  font-family: "Poppins", sans-serif;
+}
+
+:root {
+  --purple-500: hsl(259, 100%, 65%);
+  --red-400: hsl(0, 100%, 67%);
+
+  --white: hsl(0, 100%, 100%);
+  --grey-100: hsl(0, 0%, 94%);
+  --grey-200: hsl(0, 0%, 86%);
+  --grey-500: hsl(0, 1%, 44%);
+  --black: hsl(0, 0%, 0%);
+}
+
+/* Breakpoints: 
+- Mobile: 375px
+- Desktop: 1440px
+*/
+
+body {
+  background-color: var(--grey-100);
+}
+
+.error-color {
+  display: block;
+  color: var(--red-400);
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  letter-spacing: 0px;
+}
+
+.valid-day,
+.valid-month,
+.valid-year,
+.field-required {
+  display: none;
+}
+
+.error-color-label {
+  color: var(--red-400);
+}
+
+.top-part {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+  border-radius: 12px;
+  border-bottom-right-radius: 40px;
+  background-color: var(--white);
+  margin: 44px 10px 44px 10px;
+  padding: 48px 24px 48px 24px;
+}
+
+.creation-container {
+  display: flex;
+  gap: 16px;
+  flex-direction: row;
+  justify-content: space-between;
+  text-align: left;
+  margin-bottom: 40px;
+}
+
+.label-date {
+  color: var(--grey-500);
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 20px;
+  letter-spacing: 3px;
+}
+
+.creation-container input {
+  width: 100%;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 20px;
+  box-sizing: border-box;
+  padding: 12px 16px 12px 16px;
+  border: 1px solid var(--grey-200);
+  border-radius: 8px;
+}
+
+.creation-container input:hover {
+  outline: none;
+  border: 1px solid var(--purple-500);
+}
+
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+.btn-submit {
+  background-color: var(--purple-500);
+  color: var(--white);
+  border: none;
+  border-radius: 100%;
+  display: flex;
+  text-align: center;
+  padding: 20px;
+  margin: 0px auto 0px auto;
+  cursor: pointer;
+  position: absolute;
+  top: 202px;
+  right: 135px;
+}
+
+.btn-submit:hover {
+  background-color: var(--black);
+}
+
+hr {
+  border: 0;
+  height: 1px;
+  background-color: var(--grey-200);
+  margin: 0px auto 0px auto;
+  position: relative;
+}
+
+.creation-results {
+  display: flex;
+  flex-direction: column;
+  justify-content: left;
+  align-items: center;
+  margin-top: 40px;
+}
+
+.creation-results p {
+  text-align: center;
+  font-size: 56px;
+  font-weight: 700;
+  line-height: 64px;
+  color: var(--black);
+  font-style: italic;
+}
+
+.number-years,
+.number-months,
+.number-days {
+  display: inline-block;
+  margin-right: 6px;
+  color: var(--purple-500);
+  font-size: 56px;
+  font-style: italic;
+  font-weight: 700;
+  line-height: 40px;
+}
