@@ -27,10 +27,9 @@ body {
 .error-color {
   display: block;
   color: var(--red-400);
-  font-size: 16px;
+  font-size: 12px;
   font-weight: 400;
   line-height: 24px;
-  letter-spacing: 0px;
 }
 
 .valid-day,
@@ -42,6 +41,10 @@ body {
 
 .error-color-label {
   color: var(--red-400);
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 20px;
+  letter-spacing: 3px;
 }
 
 .top-part {
@@ -71,8 +74,7 @@ body {
   color: var(--grey-500);
   font-size: 12px;
   font-weight: 600;
-  line-height: 20px;
-  letter-spacing: 3px;
+  letter-spacing: 1px;
 }
 
 .creation-container input {
@@ -117,7 +119,6 @@ input[type="number"] {
 .button-line {
   border: 1px solid var(--grey-200);
   width: 100%;
-  height: 100%;
   margin: 0px auto 0px auto;
   position: relative;
 }
@@ -158,11 +159,109 @@ input[type="number"] {
     align-items: center;
     justify-content: center;
     gap: 32px;
+    max-width: 840px;
+    max-height: 680px;
     box-sizing: border-box;
     border-radius: 12px;
-    border-bottom-right-radius: 60px;
+    border-bottom-right-radius: 230px;
     background-color: var(--white);
-    margin: 100px 30px 44px 30px;
-    padding: 48px 24px 48px 24px;
+    margin: 220px auto;
+    padding: 48px 56px 48px 56px;
+  }
+
+  .creation-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+    gap: 32px;
+    margin-bottom: 40px;
+    padding: 0px 156px 0px 0px;
+  }
+
+  .creation-container div {
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+    align-items: left;
+    text-align: left;
+    max-width: 160px;
+    gap: 4px;
+  }
+
+  .creation-container input {
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 20px;
+    box-sizing: border-box;
+    padding: 12px 16px 12px 16px;
+    border: 1px solid var(--grey-200);
+    border-radius: 8px;
+  }
+
+  .label-date {
+    color: var(--grey-500);
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 1px;
+  }
+
+  .error-color {
+    display: block;
+    color: var(--red-400);
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 24px;
+  }
+
+  .btn-submit {
+    background-color: var(--purple-500);
+    color: var(--white);
+    border: none;
+    border-radius: 100%;
+    display: flex;
+    text-align: center;
+    padding: 32px;
+    margin: 0px auto 0px auto;
+    cursor: pointer;
+    position: absolute;
+    right: -2px;
+    top: -55px;
+  }
+
+  .button-line {
+    border: 1px solid var(--grey-200);
+    width: 90%;
+    margin: 0px 60px 0px auto;
+    position: relative;
+  }
+
+  .creation-results {
+    display: flex;
+    gap: 40px;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: left;
+    margin: 40px auto 0px 0px;
+  }
+
+  .creation-results p {
+    text-align: center;
+    font-size: 104px;
+    font-weight: 800;
+    line-height: 64px;
+    color: var(--black);
+    font-style: italic;
+  }
+
+  .number-years,
+  .number-months,
+  .number-days {
+    display: inline-block;
+    margin-right: 6px;
+    color: var(--purple-500);
+    font-size: 104px;
+    font-style: italic;
+    font-weight: 700;
+    line-height: 40px;
   }
 }

@@ -21,6 +21,7 @@ const submitButton = document.getElementById("btn-submit");
 // Get current year
 const currentYear = new Date().getFullYear();
 
+// Function to handle date validation and error display
 const handleDate = (e) => {
   e.preventDefault();
 
@@ -70,6 +71,7 @@ const handleDate = (e) => {
   }
 };
 
+// Function to calculate age based on the provided date of birth
 const calculateAge = (day, month, year) => {
   const birthDate = new Date(year, month - 1, day);
   const today = new Date();
@@ -92,6 +94,7 @@ const calculateAge = (day, month, year) => {
   return { years: ageYears, months: ageMonths, days: ageDays };
 };
 
+// Function to display the age in the HTML
 const displayAge = (age) => {
   document.querySelector(".number-years").innerText = age.years;
   document.querySelector(".number-months").innerText = age.months;
