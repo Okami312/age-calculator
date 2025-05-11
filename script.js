@@ -35,6 +35,7 @@ const yearRequired = document
 const yearRange = document.querySelector(".valid-year-range");
 const dateLabels = document.querySelectorAll(".label-date");
 
+const inputsField = document.querySelectorAll(".inputs-container");
 const inputError = document.querySelectorAll(".input-error");
 
 const submitButton = document.getElementById("btn-submit");
@@ -70,6 +71,7 @@ const handleDate = (e) => {
     });
     dayRequired.style.display = "block";
     dayRequired.classList.add("error-color");
+    dayOfAge.style.border = "1px solid hsl(0, 100%, 67%)";
     valid = false;
   } else if (dayOfAge.value < 1 || dayOfAge.value > 31) {
     dayValidation.style.display = "block";
@@ -81,6 +83,7 @@ const handleDate = (e) => {
   if (monthOfAge.value === "") {
     monthRequired.style.display = "block";
     monthRequired.classList.add("error-color");
+    monthOfAge.style.border = "1px solid hsl(0, 100%, 67%)";
     valid = false;
   } else if (monthOfAge.value < 1 || monthOfAge.value > 12) {
     monthValidation.style.display = "block";
@@ -92,6 +95,7 @@ const handleDate = (e) => {
   if (yearOfAge.value === "") {
     yearRequired.style.display = "block";
     yearRequired.classList.add("error-color");
+    yearOfAge.style.border = "1px solid hsl(0, 100%, 67%)";
     valid = false;
   } else {
     const yearValue = parseInt(yearOfAge.value);

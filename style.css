@@ -48,10 +48,6 @@ body {
   letter-spacing: 3px;
 }
 
-/* .input-error {
-  border: 1px solid var(--red-400) !important;
-} */
-
 .top-part {
   display: flex;
   flex-direction: column;
@@ -76,14 +72,13 @@ body {
 }
 
 .label-date {
-  /* color: var(--grey-500); */
   color: var(--red-400);
   font-size: 12px;
   font-weight: 600;
   letter-spacing: 1px;
 }
 
-.creation-container input {
+.inputs-container {
   width: 100%;
   font-size: 20px;
   font-weight: 700;
