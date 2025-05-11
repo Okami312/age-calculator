@@ -35,6 +35,7 @@ body {
 .valid-day,
 .valid-month,
 .valid-year,
+.valid-year-range,
 .field-required {
   display: none;
 }
@@ -46,6 +47,10 @@ body {
   line-height: 20px;
   letter-spacing: 3px;
 }
+
+/* .input-error {
+  border: 1px solid var(--red-400) !important;
+} */
 
 .top-part {
   display: flex;
@@ -71,7 +76,8 @@ body {
 }
 
 .label-date {
-  color: var(--grey-500);
+  /* color: var(--grey-500); */
+  color: var(--red-400);
   font-size: 12px;
   font-weight: 600;
   letter-spacing: 1px;

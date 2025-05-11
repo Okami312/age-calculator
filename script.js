@@ -2,30 +2,51 @@ const dayOfAge = document.getElementById("day");
 const monthOfAge = document.getElementById("month");
 const yearOfAge = document.getElementById("year");
 
+dayOfAge.addEventListener("input", (e) => {
+  if (e.target.value.length === 2) {
+    monthOfAge.focus();
+  }
+});
+
+monthOfAge.addEventListener("input", (e) => {
+  if (e.target.value.length === 2) {
+    yearOfAge.focus();
+  }
+});
+
+yearOfAge.addEventListener("input", (e) => {
+  e.target.value = e.target.value.replace(/\D/g, "");
+});
+
 const dayValidation = document.querySelector(".valid-day");
 const dayRequired = document
   .querySelector(".label-day")
   .parentElement.querySelector(".field-required");
+
 const monthValidation = document.querySelector(".valid-month");
 const monthRequired = document
   .querySelector(".label-month")
   .parentElement.querySelector(".field-required");
+
 const yearValidation = document.querySelector(".valid-year");
 const yearRequired = document
   .querySelector(".label-year")
   .parentElement.querySelector(".field-required");
+const yearRange = document.querySelector(".valid-year-range");
 const dateLabels = document.querySelectorAll(".label-date");
+
+const inputError = document.querySelectorAll(".input-error");
 
 const submitButton = document.getElementById("btn-submit");
 
-// Get current year
 const currentYear = new Date().getFullYear();
 
-// Function to handle date validation and error display
+// Modified handleDate function returns true if all validations pass
 const handleDate = (e) => {
   e.preventDefault();
+  let valid = true;
 
-  // Reset previous errors
+  // Reset error displays
   dayValidation.style.display = "none";
   dayRequired.style.display = "none";
   dayValidation.classList.remove("error-color");
@@ -41,6 +62,7 @@ const handleDate = (e) => {
   yearValidation.classList.remove("error-color");
   yearRequired.classList.remove("error-color");
 
+  // Validate day
   if (dayOfAge.value === "") {
     dateLabels.forEach((label) => {
       label.classList.remove("label-date");
@@ -48,30 +70,60 @@ const handleDate = (e) => {
     });
     dayRequired.style.display = "block";
     dayRequired.classList.add("error-color");
+    valid = false;
   } else if (dayOfAge.value < 1 || dayOfAge.value > 31) {
     dayValidation.style.display = "block";
     dayValidation.classList.add("error-color");
-    dateLabels[index].classList.remove("error-color-label");
+    valid = false;
   }
 
+  // Validate month
   if (monthOfAge.value === "") {
     monthRequired.style.display = "block";
     monthRequired.classList.add("error-color");
+    valid = false;
   } else if (monthOfAge.value < 1 || monthOfAge.value > 12) {
     monthValidation.style.display = "block";
     monthValidation.classList.add("error-color");
+    valid = false;
   }
 
+  // Validate year and check range
   if (yearOfAge.value === "") {
     yearRequired.style.display = "block";
     yearRequired.classList.add("error-color");
-  } else if (yearOfAge.value < 1900 || yearOfAge.value > currentYear) {
-    yearValidation.style.display = "block";
-    yearValidation.classList.add("error-color");
+    valid = false;
+  } else {
+    const yearValue = parseInt(yearOfAge.value);
+    yearValidation.innerText = "";
+    if (yearValue < 1925) {
+      yearValidation.style.display = "block";
+      yearValidation.innerText = "Must be a valid year";
+      yearValidation.classList.add("error-color");
+      valid = false;
+    } else if (yearValue > currentYear) {
+      yearValidation.style.display = "block";
+      yearValidation.innerText = "Must be in the past";
+      yearValidation.classList.add("error-color");
+      valid = false;
+    }
   }
+  return valid;
 };
 
-// Function to calculate age based on the provided date of birth
+// Combine calculation and validation in one event listener
+submitButton.addEventListener("click", (e) => {
+  // Run validation. If invalid, stop processing.
+  if (!handleDate(e)) return;
+
+  // If valid, calculate and display age
+  const day = parseInt(dayOfAge.value);
+  const month = parseInt(monthOfAge.value);
+  const year = parseInt(yearOfAge.value);
+  const age = calculateAge(day, month, year);
+  displayAge(age);
+});
+
 const calculateAge = (day, month, year) => {
   const birthDate = new Date(year, month - 1, day);
   const today = new Date();
@@ -94,21 +146,8 @@ const calculateAge = (day, month, year) => {
   return { years: ageYears, months: ageMonths, days: ageDays };
 };
 
-// Function to display the age in the HTML
 const displayAge = (age) => {
   document.querySelector(".number-years").innerText = age.years;
   document.querySelector(".number-months").innerText = age.months;
   document.querySelector(".number-days").innerText = age.days;
 };
-
-submitButton.addEventListener("click", (e) => {
-  e.preventDefault();
-  const day = parseInt(dayOfAge.value);
-  const month = parseInt(monthOfAge.value);
-  const year = parseInt(yearOfAge.value);
-
-  const age = calculateAge(day, month, year);
-  displayAge(age); // Call displayAge with the calculated age
-});
-
-submitButton.addEventListener("click", handleDate);
