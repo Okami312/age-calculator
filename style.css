@@ -55,7 +55,7 @@ body {
   justify-content: center;
   gap: 32px;
   box-sizing: border-box;
-  border-radius: 12px;
+  border-radius: 20px;
   border-bottom-right-radius: 60px;
   background-color: var(--white);
   margin: 100px 10px 44px 10px;
@@ -72,7 +72,7 @@ body {
 }
 
 .label-date {
-  color: var(--red-400);
+  color: var(--grey-500);
   font-size: 12px;
   font-weight: 600;
   letter-spacing: 1px;
@@ -163,7 +163,7 @@ input[type="number"] {
     max-width: 840px;
     max-height: 680px;
     box-sizing: border-box;
-    border-radius: 12px;
+    border-radius: 30px;
     border-bottom-right-radius: 230px;
     background-color: var(--white);
     margin: 220px auto;

@@ -2,22 +2,6 @@ const dayOfAge = document.getElementById("day");
 const monthOfAge = document.getElementById("month");
 const yearOfAge = document.getElementById("year");
 
-dayOfAge.addEventListener("input", (e) => {
-  if (e.target.value.length === 2) {
-    monthOfAge.focus();
-  }
-});
-
-monthOfAge.addEventListener("input", (e) => {
-  if (e.target.value.length === 2) {
-    yearOfAge.focus();
-  }
-});
-
-yearOfAge.addEventListener("input", (e) => {
-  e.target.value = e.target.value.replace(/\D/g, "");
-});
-
 const dayValidation = document.querySelector(".valid-day");
 const dayRequired = document
   .querySelector(".label-day")
@@ -42,12 +26,29 @@ const submitButton = document.getElementById("btn-submit");
 
 const currentYear = new Date().getFullYear();
 
-// Modified handleDate function returns true if all validations pass
+// functions focus on the next input and take only 2 digits
+dayOfAge.addEventListener("input", (e) => {
+  if (e.target.value.length === 2) {
+    monthOfAge.focus();
+  }
+});
+
+monthOfAge.addEventListener("input", (e) => {
+  if (e.target.value.length === 2) {
+    yearOfAge.focus();
+  }
+});
+
+yearOfAge.addEventListener("input", (e) => {
+  e.target.value = e.target.value.replace(/\D/g, "");
+});
+
+// handleDate function returns true if all validations pass
 const handleDate = (e) => {
   e.preventDefault();
   let valid = true;
 
-  // Reset error displays
+  // reset error
   dayValidation.style.display = "none";
   dayRequired.style.display = "none";
   dayValidation.classList.remove("error-color");
@@ -63,7 +64,7 @@ const handleDate = (e) => {
   yearValidation.classList.remove("error-color");
   yearRequired.classList.remove("error-color");
 
-  // Validate day
+  // validate dates
   if (dayOfAge.value === "") {
     dateLabels.forEach((label) => {
       label.classList.remove("label-date");
@@ -79,7 +80,6 @@ const handleDate = (e) => {
     valid = false;
   }
 
-  // Validate month
   if (monthOfAge.value === "") {
     monthRequired.style.display = "block";
     monthRequired.classList.add("error-color");
@@ -91,7 +91,7 @@ const handleDate = (e) => {
     valid = false;
   }
 
-  // Validate year and check range
+  // check range of year up tp 1925
   if (yearOfAge.value === "") {
     yearRequired.style.display = "block";
     yearRequired.classList.add("error-color");
@@ -115,12 +115,11 @@ const handleDate = (e) => {
   return valid;
 };
 
-// Combine calculation and validation in one event listener
+// calculation and validation in one event listener
 submitButton.addEventListener("click", (e) => {
-  // Run validation. If invalid, stop processing.
   if (!handleDate(e)) return;
 
-  // If valid, calculate and display age
+  // if valid, calculate and display age
   const day = parseInt(dayOfAge.value);
   const month = parseInt(monthOfAge.value);
   const year = parseInt(yearOfAge.value);
